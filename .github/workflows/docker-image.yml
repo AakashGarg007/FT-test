@@ -14,3 +14,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ft-demo:$(date +%s)
+    - name: Install dgoss and configure
+      run: |
+        curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
+	      chmod +rx /usr/local/bin/goss
+	      curl -L https://github.com/aelsabbahy/goss/releases/latest/download/dgoss -o /usr/local/bin/dgoss
+	      chmod +rx /usr/local/bin/dgoss
+	      export GOSS_PATH=~//usr/local/bin/goss
+    - name: Run Container Test
+      run: dgoss run -it --rm -p 5001:5000 ft-demo:$(date +%s)
