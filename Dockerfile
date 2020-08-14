@@ -4,6 +4,10 @@ LABEL Maintainer="Aakash Garg"
 
 WORKDIR /usr/src/app
 
+RUN pip install --no-cache-dir Flask
+
 COPY hostName.py .
 
-CMD [ "python", "hostName.py" ]
+EXPOSE 5000
+
+CMD [ "python3", "hostName.py" ]

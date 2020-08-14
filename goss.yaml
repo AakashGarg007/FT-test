@@ -1,0 +1,15 @@
+port:
+  tcp:5000:
+    listening: true
+    ip:
+    - 0.0.0.0
+process:
+  python3:
+    running: true
+http:
+  http://0.0.0.0:5000:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []
