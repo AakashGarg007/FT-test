@@ -20,5 +20,6 @@ jobs:
         chmod +rx goss
         curl -L https://github.com/aelsabbahy/goss/releases/latest/download/dgoss -o dgoss
         chmod +rx dgoss
+        export GOSS_PATH=goss
     - name: Run Container Test
       run: dgoss run -it --rm -p 5001:5000 ft-demo:$(date +%s)
