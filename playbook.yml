@@ -53,6 +53,8 @@
       yum:
         name: kubectl
 
-    - name: Create a Deployment by reading the definition from a local file
+    - name: Create Configmap and Deployment by reading the definition from a local file
       become_user: vagrant
-      shell: kubectl apply -f deployment.yaml
+      shell: |
+          kubectl create configmap hostname --from-literal=HOSTNAME=$HOSTNAME
+          kubectl apply -f deployment.yaml

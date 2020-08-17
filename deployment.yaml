@@ -28,6 +28,12 @@ spec:
     spec:
       containers:
         - name: ft-demo
-          image: i349272/ft-demo:1.1
+          image: i349272/ft-demo:1.2
+          env:
+            - name: HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: hostname
+                  key: HOSTNAME
           ports:
             - containerPort: 5000
